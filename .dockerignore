@@ -1,0 +1,11 @@
+env
+.dockerignore
+__pycache__
+coverage
+build
+env
+htmlcov
+backend.dockerfile
+Dockerfile
+Dockerfile-prod
+migrations
