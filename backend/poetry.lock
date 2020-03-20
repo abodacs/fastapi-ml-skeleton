@@ -704,6 +704,14 @@ typing_extensions = ["typing-extensions (>=3.7.2)"]
 
 [[package]]
 category = "dev"
+description = "PyCharm Debugger (used in PyCharm and PyDev)"
+name = "pydevd-pycharm"
+optional = false
+python-versions = "*"
+version = "201.6487.18"
+
+[[package]]
+category = "dev"
 description = "Python docstring style checker"
 name = "pydocstyle"
 optional = false
@@ -1059,7 +1067,7 @@ version = "1.0.1"
 dev = ["pytest (>=4.6.2)", "black (>=19.3b0)"]
 
 [metadata]
-content-hash = "3b7d8969833cc317cb7129cc72459c8e748478c7b3c0e91c05db5b96213f5093"
+content-hash = "04ac6454df536ad5d1db9afd5876ce563321e03a2be43bc7732b18f4e87b2911"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -1385,6 +1393,9 @@ pydantic = [
     {file = "pydantic-1.4-cp38-cp38-manylinux2010_x86_64.whl", hash = "sha256:6100d7862371115c40be55cc4b8d766a74b1d0dbaf99dbfe72bb4bac0faf89ed"},
     {file = "pydantic-1.4-py36.py37.py38-none-any.whl", hash = "sha256:72184c1421103cca128300120f8f1185fb42a9ea73a1c9845b1c53db8c026a7d"},
     {file = "pydantic-1.4.tar.gz", hash = "sha256:f17ec336e64d4583311249fb179528e9a2c27c8a2eaf590ec6ec2c6dece7cb3f"},
+]
+pydevd-pycharm = [
+    {file = "pydevd-pycharm-201.6487.18.tar.gz", hash = "sha256:d793e573beddad1162cd756d9f158dda342893841e3a21fe44f112edc90eb947"},
 ]
 pydocstyle = [
     {file = "pydocstyle-5.0.2-py3-none-any.whl", hash = "sha256:da7831660b7355307b32778c4a0dbfb137d89254ef31a2b2978f50fc0b4d7586"},

@@ -1,0 +1,32 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  checks:
+    name: Lint and test
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        python-version: [3.7, 3.8]
+    services:
+      api:
+        image: python:3.8.2-slim-buster
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          pip install poetry==1.0.*
+          poetry config virtualenvs.create false
+          poetry install
+      - name: Lint with wps, mypy and style linters
+        run: ./compose/backend/scripts/lint.sh
+      - name: run tests with pytest
+        env:
+          SECRET_KEY: secret_key
+        run:
+          sh ./compose/backend/scripts/test.sh --cov-report=xml --cov-fail-under=100

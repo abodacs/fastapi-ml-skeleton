@@ -4,8 +4,8 @@ set -e
 set -x
 
 
-flake8 fastapi_skeleton --exclude=fastapi_skeleton/db/migrations
-mypy fastapi_skeleton
+flake8 ./backend/fastapi_skeleton --exclude=./backend/fastapi_skeleton/db/migrations
+mypy ./backend/fastapi_skeleton
 
-black --check fastapi_skeleton --diff
-isort --recursive --check-only fastapi_skeleton
+black --check ./backend/fastapi_skeleton --diff
+isort --recursive --check-only ./backend/fastapi_skeleton

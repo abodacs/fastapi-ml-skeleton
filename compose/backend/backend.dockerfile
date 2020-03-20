@@ -15,8 +15,6 @@ RUN apt-get update && python -m pip install --upgrade pip && \
     libproj-dev gdal-bin libgeoip1 libgeoip-dev gettext python-dev && \
     rm -rf /var/lib/apt/lists/* && apt clean
 
-RUN pip install pydevd-pycharm~=201.6487.18
-
 # Copy only requirements, to cache them in docker layer:
 WORKDIR /pysetup
 COPY ./backend/pyproject.toml ./backend/poetry.lock /pysetup/
