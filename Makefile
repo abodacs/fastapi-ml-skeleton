@@ -1,5 +1,5 @@
 up:
-	docker-compose -f docker-compose.dev.yml up -d $(filter-out $@,$(MAKECMDGOALS))
+	docker-compose -f docker-compose-dev.yml up -d $(filter-out $@,$(MAKECMDGOALS))
 
 build:
 	docker-compose -f docker-compose-dev.yml build $(filter-out $@,$(MAKECMDGOALS))

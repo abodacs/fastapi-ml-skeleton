@@ -1,4 +1,4 @@
-FROM python:3.7
+FROM python:3.8.2-slim-buster
 
 ENV LANG C.UTF-8
 # set environment variables
@@ -15,6 +15,7 @@ RUN apt-get update && pip install --upgrade pip && \
     apt-get install --no-install-recommends --no-install-suggests -y && \
     rm -rf /var/lib/apt/lists/* && apt clean
 # RUN apt-get -y install sudo
+RUN pip install pydevd-pycharm~=201.6487.18
 
 COPY backend/requirements.txt /appuser/requirements.txt
 RUN python -m pip install -r /appuser/requirements.txt --no-cache-dir
