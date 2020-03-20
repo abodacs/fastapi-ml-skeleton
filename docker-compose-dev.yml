@@ -6,6 +6,8 @@ services:
       dockerfile: ./compose/backend/backend.dockerfile
       args:
         env: dev
+    ports:
+      - "8888:8888"
     env_file:
       - .env
     volumes:
