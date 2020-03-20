@@ -10,6 +10,9 @@ stop:
 run:
 	docker-compose -f docker-compose-dev.yml run --rm  $(filter-out $@,$(MAKECMDGOALS))
 
+tox:
+	docker-compose -f docker-compose-dev.yml run --rm api tox
+
 bash:
 	docker-compose -f docker-compose-dev.yml run --rm api bash
 
@@ -18,3 +21,11 @@ logs:
 
 down:
 	COMPOSE_HTTP_TIMEOUT=200 docker-compose -f docker-compose-dev.yml down
+
+
+install-pre-commit: install-test-requirements
+	pre-commit install --install-hooks
+
+uninstall-pre-commit:
+	pre-commit uninstall
+	pre-commit uninstall --hook-type pre-push

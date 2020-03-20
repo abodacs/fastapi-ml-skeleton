@@ -10,22 +10,28 @@ ENV PYTHONUNBUFFERED 1
 # jupyter lab --ip=0.0.0.0 --allow-root --NotebookApp.custom_display_url=http://127.0.0.1:8888
 ARG env=prod
 RUN bash -c "if [ $env == 'dev' ] ; then pip install jupyterlab ; fi"
-
-RUN apt-get update && pip install --upgrade pip && \
-    apt-get install --no-install-recommends --no-install-suggests -y && \
+RUN apt-get update && python -m pip install --upgrade pip && \
+    apt-get install --no-install-recommends --no-install-suggests -y \
+    libproj-dev gdal-bin libgeoip1 libgeoip-dev gettext python-dev && \
     rm -rf /var/lib/apt/lists/* && apt clean
-# RUN apt-get -y install sudo
+
 RUN pip install pydevd-pycharm~=201.6487.18
 
-COPY backend/requirements.txt /appuser/requirements.txt
-RUN python -m pip install -r /appuser/requirements.txt --no-cache-dir
+# Copy only requirements, to cache them in docker layer:
+WORKDIR /pysetup
+COPY ./backend/pyproject.toml ./backend/poetry.lock /pysetup/
+
+RUN pip install poetry==1.0.*
+ENV PATH = "${PATH}:/root/.poetry/bin"
+
+RUN poetry config  virtualenvs.create false && \
+  poetry install $(test "$env" == prod && echo "--no-dev") --no-interaction --no-ansi
 
 # set working directory
-RUN adduser  \
-    --disabled-password \
-    --gecos "" \
-    --home /app \
-    appuser
+RUN adduser  -disabled-password  --gecos "" --home /app appuser
+
+COPY ./backend /app
+
 
 COPY compose/backend /usr/local/bin/
 
@@ -38,7 +44,6 @@ RUN chmod +x /usr/local/bin/start.sh && \
 # RUN chown -R appuser:appuser socket
 
 USER appuser
-COPY ./backend /app
 WORKDIR /app
 
 USER root
