@@ -22,6 +22,7 @@ jobs:
         run: |
           pip install poetry==1.0.*
           poetry config virtualenvs.create false
+          cd ./backend/
           poetry install
       - name: Lint with wps, mypy and style linters
         run: ./compose/backend/scripts/lint.sh
