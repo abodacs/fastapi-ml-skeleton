@@ -8,14 +8,15 @@ To experiment and get a feeling on how to use this skeleton, a sample regression
 
 ## Requirements
 
-Python 3.6+
+* Docker
+* Docker Compose
 
 ## Installation
-Install the required packages in your local environment (ideally virtualenv, conda, etc.).
-```bash
-pip install -r requirements
-``` 
+* Start the stack with Docker Compose:
 
+```bash
+make build
+```` 
 
 ## Setup
 1. Duplicate the `.env.example` file and rename it to `.env` 
@@ -32,10 +33,10 @@ print(str(uuid.uuid4()))
 
 1. Start your  app with: 
 ```bash
-uvicorn fastapi_skeleton.main:app
+make up
 ```
 
-2. Go to [http://localhost:8000/docs](http://localhost:8000/docs).
+2. Go to [http://localhost:8888/docs](http://localhost:8888/docs).
    
 3. Click `Authorize` and enter the API key as created in the Setup step.
 ![Authroization](backend/docs/authorize.png)
