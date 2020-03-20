@@ -28,7 +28,6 @@ workers = web_concurrency
 bind = use_bind
 keepalive = 120
 errorlog = "-"
-11
 # For debugging and testing
 log_data = {
     "loglevel": loglevel,
@@ -39,4 +38,4 @@ log_data = {
     "host": host,
     "port": port,
 }
-print(json.dumps(log_data))
+# print(json.dumps(log_data))

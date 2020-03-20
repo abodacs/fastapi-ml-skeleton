@@ -1,16 +1,19 @@
 from fastapi import FastAPI
 from fastapi.exceptions import RequestValidationError
-from fastapi_skeleton.api.errors.http_error import http_error_handler
-from fastapi_skeleton.api.errors.validation_error import http422_error_handler
-from fastapi_skeleton.api.routes.router import api_router
-from fastapi_skeleton.core.config import (ALLOWED_HOSTS, API_PREFIX, APP_NAME, APP_VERSION, IS_DEBUG)
-from fastapi_skeleton.core.event_handlers import (start_app_handler, stop_app_handler)
 from starlette.exceptions import HTTPException
 from starlette.middleware.cors import CORSMiddleware
 
-
-import pydevd_pycharm
-# pydevd_pycharm.settrace('172.18.0.1', port=1234, stdoutToServer=True, stderrToServer=True)
+from fastapi_skeleton.api.errors.http_error import http_error_handler
+from fastapi_skeleton.api.errors.validation_error import http422_error_handler
+from fastapi_skeleton.api.routes.router import api_router
+from fastapi_skeleton.core.config import (
+    ALLOWED_HOSTS,
+    API_PREFIX,
+    APP_NAME,
+    APP_VERSION,
+    IS_DEBUG,
+)
+from fastapi_skeleton.core.event_handlers import start_app_handler, stop_app_handler
 
 
 def get_app() -> FastAPI:
