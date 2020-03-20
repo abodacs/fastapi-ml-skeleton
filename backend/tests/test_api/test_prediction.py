@@ -1,5 +1,3 @@
-
-
 from fastapi_skeleton.core import config
 
 

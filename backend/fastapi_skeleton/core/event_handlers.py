@@ -6,7 +6,7 @@ from fastapi import FastAPI
 from loguru import logger
 
 from fastapi_skeleton.core.config import DEFAULT_MODEL_PATH
-from fastapi_skeleton.services.models import HousePriceModel
+from fastapi_skeleton.services import HousePriceModel
 
 
 def _startup_model(app: FastAPI) -> None:

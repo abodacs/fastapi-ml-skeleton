@@ -2,9 +2,9 @@
 import pytest
 
 from fastapi_skeleton.core import config
-from fastapi_skeleton.models.payload import HousePredictionPayload
-from fastapi_skeleton.models.prediction import HousePredictionResult
-from fastapi_skeleton.services.models import HousePriceModel
+from fastapi_skeleton.models import HousePredictionPayload
+from fastapi_skeleton.models import HousePredictionResult
+from fastapi_skeleton.services import HousePriceModel
 
 
 def test_prediction(test_client) -> None:

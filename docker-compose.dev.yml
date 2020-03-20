@@ -1,0 +1,12 @@
+version: '3.3'
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./compose/backend/backend.dockerfile
+      args:
+        env: dev
+    env_file:
+      - .env
+    volumes:
+      - ./backend/:/app

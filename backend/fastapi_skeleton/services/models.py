@@ -6,10 +6,10 @@ import joblib
 import numpy as np
 from loguru import logger
 
-from fastapi_skeleton.core.messages import NO_VALID_PAYLOAD
-from fastapi_skeleton.models.payload import (HousePredictionPayload,
+from fastapi_skeleton.core import NO_VALID_PAYLOAD
+from fastapi_skeleton.models import (HousePredictionPayload,
                                              payload_to_list)
-from fastapi_skeleton.models.prediction import HousePredictionResult
+from fastapi_skeleton.models import HousePredictionResult
 
 
 class HousePriceModel(object):

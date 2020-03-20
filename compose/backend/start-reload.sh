@@ -1,7 +1,7 @@
 #! /usr/bin/env sh
 set -e
 
-if [ -f /usr/src/fastapi_skeleton/main.py ]; then
+if [ -f /app/fastapi_skeleton/main.py ]; then
     DEFAULT_MODULE_NAME=app.main
 elif [ -f /fastapi_skeleton/main.py ]; then
     DEFAULT_MODULE_NAME=main
@@ -14,8 +14,8 @@ HOST=${HOST:-0.0.0.0}
 PORT=${PORT:-80}
 LOG_LEVEL=${LOG_LEVEL:-info}
 
-# If there's a prestart.sh script in the /app directory, run it before starting
-PRE_START_PATH=/usr/src/fastapi_skeleton/prestart.sh
+# If there's a prestart.sh script in the bin directory, run it before starting
+PRE_START_PATH=/usr/local/bin/prestart.sh
 echo "Checking for script in $PRE_START_PATH"
 if [ -f $PRE_START_PATH ] ; then
     echo "Running script $PRE_START_PATH"
