@@ -16,6 +16,9 @@ tox:
 bash:
 	 docker exec -it fastapi-ml-skeleton_api_1 /bin/bash
 
+format:
+	 docker exec -it fastapi-ml-skeleton_api_1 /bin/bash /usr/local/bin/scripts/format
+
 logs:
 	COMPOSE_HTTP_TIMEOUT=200 docker-compose -f docker-compose-dev.yml logs -f --tail=70 $(filter-out $@,$(MAKECMDGOALS))
 

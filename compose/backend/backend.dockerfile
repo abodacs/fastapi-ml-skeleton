@@ -31,7 +31,7 @@ RUN adduser  -disabled-password  --gecos "" --home /app appuser
 COPY ./backend /app
 
 
-COPY compose/backend /usr/local/bin/
+COPY ./compose/backend /usr/local/bin/
 
 RUN chmod +x /usr/local/bin/start.sh && \
     chmod +x /usr/local/bin/start-reload.sh

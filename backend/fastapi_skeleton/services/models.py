@@ -1,5 +1,6 @@
 # Standard Library
-from typing import List, Optional
+from typing import List, Optional, Union
+from pathlib import Path
 
 import joblib  # type: ignore
 import numpy as np  # type: ignore
@@ -14,7 +15,7 @@ from fastapi_skeleton.models.prediction import HousePredictionResult
 class HousePriceModel:  # noqa: WPS338
     RESULT_UNIT_FACTOR = 100000  # noqa: WPS115
 
-    def __init__(self, path: str) -> None:
+    def __init__(self, path: Union[str, Path]) -> None:
         self.path = path
         self._load_local_model()
 
@@ -31,8 +32,9 @@ class HousePriceModel:  # noqa: WPS338
         human_readable_unit = prediction_result[0] * self.RESULT_UNIT_FACTOR
         return HousePredictionResult(median_house_value=human_readable_unit)
 
-    def _predict(self, features: List[float]) -> np.ndarray[float]:
+    def _predict(self, features: List) -> np.ndarray:
         logger.debug("Predicting.")
+        print('_predict:::', features)
         return self.model.predict(features)
 
     def predict(
