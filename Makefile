@@ -14,7 +14,7 @@ tox:
 	docker-compose -f docker-compose-dev.yml run --rm api tox
 
 bash:
-	docker-compose -f docker-compose-dev.yml run --rm api bash
+	 docker exec -it fastapi-ml-skeleton_api_1 /bin/bash
 
 logs:
 	COMPOSE_HTTP_TIMEOUT=200 docker-compose -f docker-compose-dev.yml logs -f --tail=70 $(filter-out $@,$(MAKECMDGOALS))

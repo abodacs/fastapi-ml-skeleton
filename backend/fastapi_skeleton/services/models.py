@@ -1,9 +1,11 @@
+# Standard Library
 from typing import List
 
 import joblib
 import numpy as np
 from loguru import logger
 
+# Skeleton
 from fastapi_skeleton.core.messages import NO_VALID_PAYLOAD
 from fastapi_skeleton.models.payload import HousePredictionPayload, payload_to_list
 from fastapi_skeleton.models.prediction import HousePredictionResult

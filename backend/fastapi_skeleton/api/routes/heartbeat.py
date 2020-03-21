@@ -1,5 +1,6 @@
 from fastapi import APIRouter
 
+# Skeleton
 from fastapi_skeleton.models import HeartbeatResult
 
 router = APIRouter()

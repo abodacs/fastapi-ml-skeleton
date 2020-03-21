@@ -1,5 +1,6 @@
 from fastapi import APIRouter
 
+# Skeleton
 from fastapi_skeleton.api.routes import heartbeat, prediction
 
 api_router = APIRouter()

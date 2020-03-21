@@ -1,8 +1,10 @@
+# Standard Library
 from typing import Callable
 
 from fastapi import FastAPI
 from loguru import logger
 
+# Skeleton
 from fastapi_skeleton.core.config import DEFAULT_MODEL_PATH
 from fastapi_skeleton.services.models import HousePriceModel
 

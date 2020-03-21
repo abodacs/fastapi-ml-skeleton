@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends
 from starlette.requests import Request
 
+# Skeleton
 from fastapi_skeleton.core import security
 from fastapi_skeleton.models.payload import HousePredictionPayload
 from fastapi_skeleton.models.prediction import HousePredictionResult
