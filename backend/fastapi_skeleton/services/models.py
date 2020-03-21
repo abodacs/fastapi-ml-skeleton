@@ -9,8 +9,8 @@ from fastapi_skeleton.models.payload import HousePredictionPayload, payload_to_l
 from fastapi_skeleton.models.prediction import HousePredictionResult
 
 
-class HousePriceModel(object):
-    RESULT_UNIT_FACTOR = 100000
+class HousePriceModel:  # noqa: WPS338
+    RESULT_UNIT_FACTOR = 100000  # noqa: WPS115
 
     def __init__(self, path):
         self.path = path
@@ -25,8 +25,8 @@ class HousePriceModel(object):
 
     def _post_process(self, prediction: np.ndarray) -> HousePredictionResult:
         logger.debug("Post-processing prediction.")
-        result = prediction.tolist()
-        human_readable_unit = result[0] * self.RESULT_UNIT_FACTOR
+        prediction_result = prediction.tolist()
+        human_readable_unit = prediction_result[0] * self.RESULT_UNIT_FACTOR
         return HousePredictionResult(median_house_value=human_readable_unit)
 
     def _predict(self, features: List) -> np.ndarray:

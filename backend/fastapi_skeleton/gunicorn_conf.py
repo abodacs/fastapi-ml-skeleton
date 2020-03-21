@@ -1,4 +1,3 @@
-import json
 import multiprocessing
 import os
 
@@ -18,7 +17,7 @@ workers_per_core = float(workers_per_core_str)
 default_web_concurrency = workers_per_core * cores
 if web_concurrency_str:
     web_concurrency = int(web_concurrency_str)
-    assert web_concurrency > 0
+    # assert web_concurrency > 0
 else:
     web_concurrency = max(int(default_web_concurrency), 2)
 
@@ -38,4 +37,3 @@ log_data = {
     "host": host,
     "port": port,
 }
-# print(json.dumps(log_data))
