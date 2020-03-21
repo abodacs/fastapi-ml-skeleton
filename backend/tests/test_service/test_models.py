@@ -2,8 +2,8 @@ import pytest
 
 # Skeleton
 from fastapi_skeleton.core import config
-from fastapi_skeleton.models.prediction import HousePredictionResult
 from fastapi_skeleton.models.payload import HousePredictionPayload
+from fastapi_skeleton.models.prediction import HousePredictionResult
 from fastapi_skeleton.services.models import HousePriceModel
 
 

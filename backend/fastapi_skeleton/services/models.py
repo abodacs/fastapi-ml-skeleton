@@ -1,6 +1,6 @@
 # Standard Library
-from typing import List, Optional, Union
 from pathlib import Path
+from typing import List, Optional, Union
 
 import joblib  # type: ignore
 import numpy as np  # type: ignore
@@ -32,9 +32,8 @@ class HousePriceModel:  # noqa: WPS338
         human_readable_unit = prediction_result[0] * self.RESULT_UNIT_FACTOR
         return HousePredictionResult(median_house_value=human_readable_unit)
 
-    def _predict(self, features: List) -> np.ndarray:
+    def _predict(self, features: np.ndarray) -> np.ndarray:
         logger.debug("Predicting.")
-        print('_predict:::', features)
         return self.model.predict(features)
 
     def predict(
