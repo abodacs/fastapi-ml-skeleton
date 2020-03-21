@@ -32,5 +32,6 @@ jobs:
         env:
           SECRET_KEY: secret_key
           API_KEY: a1279d26-63ac-41f1-8266-4ef3702ad7cb
+          DEFAULT_MODEL_PATH: ./sample_model/lin_reg_california_housing_model.joblib
         run: |
           sh compose/backend/scripts/test.sh --cov-report=xml --cov-fail-under=50
