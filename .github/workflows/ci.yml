@@ -26,9 +26,11 @@ jobs:
           poetry install
       - name: Lint with wps, mypy and style linters
         run: |
-          sh ./compose/backend/scripts/lint.sh
+          cd ./backend/
+          sh ../compose/backend/scripts/lint.sh
       - name: run tests with pytest
         env:
           SECRET_KEY: secret_key
         run: |
-          sh ./compose/backend/scripts/test.sh --cov-report=xml --cov-fail-under=100
+          cd ./backend/
+          sh ../compose/backend/scripts/test.sh --cov-report=xml --cov-fail-under=100
