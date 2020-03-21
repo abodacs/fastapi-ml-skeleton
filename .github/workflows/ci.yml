@@ -31,5 +31,6 @@ jobs:
       - name: run tests with pytest
         env:
           SECRET_KEY: secret_key
+          API_KEY: a1279d26-63ac-41f1-8266-4ef3702ad7cb
         run: |
           sh compose/backend/scripts/test.sh --cov-report=xml --cov-fail-under=50
