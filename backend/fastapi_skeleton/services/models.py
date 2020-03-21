@@ -35,7 +35,9 @@ class HousePriceModel:  # noqa: WPS338
         logger.debug("Predicting.")
         return self.model.predict(features)
 
-    def predict(self, payload: Optional[HousePredictionPayload]) -> HousePredictionResult:
+    def predict(
+        self, payload: Optional[HousePredictionPayload]
+    ) -> HousePredictionResult:
         if payload is None:
             raise ValueError(NO_VALID_PAYLOAD.format(payload))
 
