@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.exceptions import RequestValidationError
 from starlette.exceptions import HTTPException
 from starlette.middleware.cors import CORSMiddleware
+from fastapi_skeleton.core.event_handlers import start_app_handler, stop_app_handler
 
 from fastapi_skeleton.api.errors.http_error import http_error_handler
 from fastapi_skeleton.api.errors.validation_error import http422_error_handler
@@ -13,7 +14,6 @@ from fastapi_skeleton.core.config import (
     APP_VERSION,
     IS_DEBUG,
 )
-from fastapi_skeleton.core.event_handlers import start_app_handler, stop_app_handler
 
 
 def get_app() -> FastAPI:
