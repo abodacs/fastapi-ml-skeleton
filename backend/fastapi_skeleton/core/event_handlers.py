@@ -19,7 +19,7 @@ def _shutdown_model(app: FastAPI) -> None:
     app.state.model = None
 
 
-def start_app_handler(app: FastAPI) -> Callable:
+def start_app_handler(app: FastAPI) -> Callable:  # type: ignore
     def startup() -> None:
         logger.info("Running app start handler.")
         _startup_model(app)
@@ -27,7 +27,7 @@ def start_app_handler(app: FastAPI) -> Callable:
     return startup
 
 
-def stop_app_handler(app: FastAPI) -> Callable:
+def stop_app_handler(app: FastAPI) -> Callable:  # type: ignore
     def shutdown() -> None:
         logger.info("Running app shutdown handler.")
         _shutdown_model(app)

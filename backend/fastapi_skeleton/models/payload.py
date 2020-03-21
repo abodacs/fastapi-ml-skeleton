@@ -1,5 +1,5 @@
 # Standard Library
-from typing import List
+from typing import List, Tuple
 
 from pydantic import BaseModel
 
@@ -15,7 +15,7 @@ class HousePredictionPayload(BaseModel):
     block_longitude: float
 
 
-def payload_to_list(hpp: HousePredictionPayload) -> List:
+def payload_to_list(hpp: HousePredictionPayload) -> List[float]:
     return [
         hpp.median_income_in_block,
         hpp.median_house_age_in_block,

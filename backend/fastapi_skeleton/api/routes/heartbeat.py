@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
 # Skeleton
-from fastapi_skeleton.models import HeartbeatResult
+from fastapi_skeleton.models.heartbeat import HeartbeatResult
 
 router = APIRouter()
 

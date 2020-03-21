@@ -1,8 +1,8 @@
 # Standard Library
-from typing import List
+from typing import List, Optional
 
-import joblib
-import numpy as np
+import joblib  # type: ignore
+import numpy as np  # type: ignore
 from loguru import logger
 
 # Skeleton
@@ -14,14 +14,14 @@ from fastapi_skeleton.models.prediction import HousePredictionResult
 class HousePriceModel:  # noqa: WPS338
     RESULT_UNIT_FACTOR = 100000  # noqa: WPS115
 
-    def __init__(self, path):
+    def __init__(self, path: str) -> None:
         self.path = path
         self._load_local_model()
 
-    def _load_local_model(self):
+    def _load_local_model(self) -> None:
         self.model = joblib.load(self.path)
 
-    def _pre_process(self, payload: HousePredictionPayload) -> List:
+    def _pre_process(self, payload: HousePredictionPayload) -> List[float]:
         logger.debug("Pre-processing payload.")
         return np.asarray(payload_to_list(payload)).reshape(1, -1)
 
@@ -31,11 +31,11 @@ class HousePriceModel:  # noqa: WPS338
         human_readable_unit = prediction_result[0] * self.RESULT_UNIT_FACTOR
         return HousePredictionResult(median_house_value=human_readable_unit)
 
-    def _predict(self, features: List) -> np.ndarray:
+    def _predict(self, features: List[float]) -> np.ndarray[float]:
         logger.debug("Predicting.")
         return self.model.predict(features)
 
-    def predict(self, payload: HousePredictionPayload):
+    def predict(self, payload: Optional[HousePredictionPayload]) -> HousePredictionResult:
         if payload is None:
             raise ValueError(NO_VALID_PAYLOAD.format(payload))
 
